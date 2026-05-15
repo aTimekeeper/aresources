@@ -174,23 +174,6 @@
       transform: translateY(-1px);
     }
 
-    .voice-toggle {
-      min-height: 38px;
-      border: 1px solid rgba(223, 63, 128, .14);
-      border-radius: 999px;
-      padding: 0 13px;
-      color: var(--soft-ink);
-      cursor: pointer;
-      background: rgba(255, 255, 255, .68);
-      transition: transform .18s ease, background .18s ease, color .18s ease;
-    }
-
-    .voice-toggle:hover {
-      color: var(--petal-dark);
-      background: rgba(255, 255, 255, .94);
-      transform: translateY(-1px);
-    }
-
     .hero {
       min-height: 430px;
       display: grid;
@@ -905,7 +888,6 @@
         <a href="#featured">推荐</a>
         <a href="#library">资源库</a>
         <a href="#publish">公开访问</a>
-        <button id="voiceToggle" class="voice-toggle" type="button" aria-pressed="true">语音开</button>
       </nav>
     </header>
 
@@ -1105,7 +1087,57 @@
       { name: "ProcessOn", category: "实用工具", description: "中文在线流程图、思维导图和协作绘图工具。", icon: "图", logo: favicon("processon.com"), url: "https://www.processon.com/", tags: ["中文", "流程图", "协作"], audience: "学生 / 职场", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "适合画流程图和思维导图；免费额度有限，重要图请导出备份。", confirmBeforeOpen: true, featured: false },
       { name: "腾讯文档", category: "实用工具", description: "在线文档、表格、收集表和多人协作工具。", icon: "文", logo: favicon("docs.qq.com"), url: "https://docs.qq.com/", tags: ["中文", "文档", "协作"], audience: "办公 / 学习", risk: "官方服务", official: "官方平台", region: "中国", language: "中文", guide: "适合多人协作文档和表格；分享前检查权限范围。", confirmBeforeOpen: true, featured: false },
       { name: "Photopea", category: "实用工具", description: "浏览器里的图片编辑工具，可处理 PSD、图片和简单设计。", icon: "修", logo: favicon("photopea.com"), url: "https://www.photopea.com/", tags: ["修图", "设计", "在线工具"], audience: "创作者", risk: "第三方工具", official: "官方", region: "全球", language: "中文友好", guide: "适合临时修图和打开 PSD；涉及隐私图片时注意在线工具风险。", confirmBeforeOpen: true, featured: true },
-      { name: "TinyPNG", category: "实用工具", description: "在线压缩 PNG、JPEG 和 WebP 图片，适合网站发布前优化。", icon: "压", logo: favicon("tinypng.com"), url: "https://tinypng.com/", tags: ["压缩", "图片", "工具"], audience: "站长 / 设计", risk: "第三方工具", official: "官方", region: "全球", language: "英文", guide: "拖入图片即可压缩；批量或大图可能有限制。", confirmBeforeOpen: true, featured: false }
+      { name: "TinyPNG", category: "实用工具", description: "在线压缩 PNG、JPEG 和 WebP 图片，适合网站发布前优化。", icon: "压", logo: favicon("tinypng.com"), url: "https://tinypng.com/", tags: ["压缩", "图片", "工具"], audience: "站长 / 设计", risk: "第三方工具", official: "官方", region: "全球", language: "英文", guide: "拖入图片即可压缩；批量或大图可能有限制。", confirmBeforeOpen: true, featured: false },
+      { name: "万方数据", category: "论文搜索", description: "中文学术论文、学位论文、会议和标准检索平台。", icon: "万", logo: favicon("wanfangdata.com.cn"), url: "https://www.wanfangdata.com.cn/", tags: ["中文", "论文", "数据库"], audience: "学生 / 研究者", risk: "部分内容需付费或机构权限", official: "官方平台", region: "中国", language: "中文", guide: "适合查中文论文和学位论文；下载全文前确认机构权限。", confirmBeforeOpen: true, featured: false },
+      { name: "维普网", category: "论文搜索", description: "中文期刊文献检索平台，覆盖期刊、论文和学术资源。", icon: "维", logo: favicon("cqvip.com"), url: "https://www.cqvip.com/", tags: ["中文", "期刊", "论文"], audience: "学生 / 研究者", risk: "部分内容需付费或机构权限", official: "官方平台", region: "中国", language: "中文", guide: "适合检索中文期刊文献；注意区分题录、摘要和全文权限。", confirmBeforeOpen: true, featured: false },
+      { name: "中国科技论文在线", category: "论文搜索", description: "教育部科技发展中心主办的中文科技论文服务平台。", icon: "科", logo: favicon("paper.edu.cn"), url: "https://www.paper.edu.cn/", tags: ["中文", "科技论文", "开放"], audience: "学生 / 研究者", risk: "开放资源", official: "官方平台", region: "中国", language: "中文", guide: "适合查中文科技论文和预印本；可按学科和关键词检索。", confirmBeforeOpen: true, featured: false },
+      { name: "中国科学院文献情报中心", category: "文献资料", description: "中科院文献情报服务入口，适合科研信息和文献服务。", icon: "院", logo: favicon("las.ac.cn"), url: "https://www.las.ac.cn/", tags: ["中文", "科研", "文献"], audience: "研究者", risk: "官方资源", official: "官方", region: "中国", language: "中文", guide: "适合了解科研文献服务和情报资源；具体资源权限按平台说明使用。", confirmBeforeOpen: true, featured: false },
+      { name: "上海图书馆", category: "文献资料", description: "上海图书馆官网，提供馆藏检索、数字资源和读者服务。", icon: "上", logo: favicon("library.sh.cn"), url: "https://www.library.sh.cn/", tags: ["中文", "图书馆", "数字资源"], audience: "学习者 / 研究者", risk: "官方资源", official: "官方", region: "中国", language: "中文", guide: "适合查馆藏和数字资源；部分服务需要读者证或登录。", confirmBeforeOpen: true, featured: false },
+      { name: "国家标准全文公开系统", category: "文献资料", description: "国家标准公开查询入口，可查看部分标准文本。", icon: "标", logo: favicon("openstd.samr.gov.cn"), url: "https://openstd.samr.gov.cn/", tags: ["中文", "标准", "官方"], audience: "工程 / 研究用户", risk: "官方资源", official: "官方", region: "中国", language: "中文", guide: "适合查询国家标准编号和公开文本；注意强制/推荐标准差异。", confirmBeforeOpen: true, featured: false },
+      { name: "360 软件管家", category: "正版下载", description: "中文常用软件下载和更新入口。", icon: "360", logo: favicon("baoku.360.cn"), url: "https://baoku.360.cn/", tags: ["中文", "软件", "下载"], audience: "Windows 用户", risk: "第三方下载站，注意安装选项", official: "第三方平台", region: "中国", language: "中文", guide: "下载软件前看清来源和安装选项；优先选择官方版本。", confirmBeforeOpen: true, featured: false },
+      { name: "华为应用市场 PC 版", category: "正版下载", description: "华为官方应用市场，提供软件和移动应用入口。", icon: "华", logo: favicon("appgallery.huawei.com"), url: "https://appgallery.huawei.com/", tags: ["中文", "华为", "应用"], audience: "华为 / Windows 用户", risk: "官方平台", official: "官方", region: "中国", language: "中文", guide: "适合找华为生态应用和常用软件；下载前确认设备平台。", confirmBeforeOpen: true, featured: false },
+      { name: "Microsoft Store", category: "正版下载", description: "微软官方应用商店，可下载 Windows 应用。", icon: "MS", logo: favicon("apps.microsoft.com"), url: "https://apps.microsoft.com/", tags: ["应用商店", "Windows", "官方"], audience: "Windows 用户", risk: "官方平台", official: "官方", region: "全球", language: "中文友好", guide: "适合下载商店版应用；登录微软账号后可同步安装记录。", confirmBeforeOpen: true, featured: false },
+      { name: "火绒安全", category: "正版下载", description: "中文安全软件官网，提供火绒个人版下载。", icon: "火", logo: favicon("huorong.cn"), url: "https://www.huorong.cn/", tags: ["中文", "安全", "下载"], audience: "Windows 用户", risk: "官方", official: "官方", region: "中国", language: "中文", guide: "适合下载火绒安全软件；安全软件安装前建议先卸载同类产品避免冲突。", confirmBeforeOpen: true, featured: false },
+      { name: "FirPE", category: "装机工具", description: "中文 WinPE 工具站，提供 PE 维护系统下载。", icon: "FP", logo: favicon("firpe.cn"), url: "https://firpe.cn/", tags: ["中文", "WinPE", "装机"], audience: "装机用户", risk: "第三方 PE，操作前备份数据", official: "第三方", region: "中国", language: "中文", guide: "适合制作维护启动盘；下载 PE 前确认来源，重装或分区前备份数据。", confirmBeforeOpen: true, featured: false },
+      { name: "优启通", category: "装机工具", description: "中文装机维护工具，常用于制作启动盘和系统维护。", icon: "优", logo: favicon("uqitong.com"), url: "https://www.uqitong.com/", tags: ["中文", "启动盘", "装机"], audience: "装机维护用户", risk: "第三方工具，注意下载来源", official: "第三方", region: "中国", language: "中文", guide: "适合制作装机维护盘；使用前请确认下载来源并备份 U 盘数据。", confirmBeforeOpen: true, featured: false },
+      { name: "CrystalDiskInfo", category: "装机工具", description: "硬盘健康状态检测工具，适合查看 SMART 信息。", icon: "CD", logo: favicon("crystalmark.info"), url: "https://crystalmark.info/en/software/crystaldiskinfo/", tags: ["硬盘", "健康", "检测"], audience: "装机 / 维护用户", risk: "官方工具", official: "官方", region: "全球", language: "中文友好", guide: "适合查看硬盘健康和通电时间；出现警告时及时备份数据。", confirmBeforeOpen: true, featured: false },
+      { name: "NEXT I Tell You", category: "系统镜像", description: "第三方系统镜像索引站，提供原版镜像信息查询。", icon: "NX", logo: favicon("next.itellyou.cn"), url: "https://next.itellyou.cn/", tags: ["中文", "镜像索引", "第三方"], audience: "进阶用户", risk: "第三方索引，务必校验 Hash", official: "第三方", region: "中国", language: "中文", guide: "下载系统镜像后请校验哈希值；重要设备优先使用微软官方镜像。", confirmBeforeOpen: true, featured: false },
+      { name: "HelloWindows", category: "系统镜像", description: "中文 Windows 资源与镜像信息站。", icon: "HW", logo: favicon("hellowindows.cn"), url: "https://hellowindows.cn/", tags: ["中文", "Windows", "第三方"], audience: "进阶 Windows 用户", risk: "第三方资源，需自行判断", official: "第三方", region: "中国", language: "中文", guide: "适合查询 Windows 版本和资源线索；下载后请校验来源和哈希。", confirmBeforeOpen: true, featured: false },
+      { name: "惠普驱动支持", category: "驱动工具", description: "HP 惠普官方驱动和支持入口。", icon: "HP", logo: favicon("support.hp.com"), url: "https://support.hp.com/cn-zh/drivers", tags: ["中文", "惠普", "驱动"], audience: "惠普电脑用户", risk: "官方", official: "官方", region: "中国", language: "中文", guide: "输入产品型号或序列号后下载驱动；品牌机优先使用官方驱动页。", confirmBeforeOpen: true, featured: false },
+      { name: "戴尔驱动支持", category: "驱动工具", description: "Dell 戴尔官方驱动和下载中心。", icon: "DE", logo: favicon("dell.com"), url: "https://www.dell.com/support/home/zh-cn?app=drivers", tags: ["中文", "戴尔", "驱动"], audience: "戴尔电脑用户", risk: "官方", official: "官方", region: "中国", language: "中文", guide: "输入服务编号或型号后下载驱动；BIOS 更新前请阅读说明。", confirmBeforeOpen: true, featured: false },
+      { name: "技嘉驱动下载", category: "驱动工具", description: "技嘉主板、显卡和硬件驱动支持页面。", icon: "技", logo: favicon("gigabyte.cn"), url: "https://www.gigabyte.cn/Support", tags: ["中文", "技嘉", "驱动"], audience: "DIY / 技嘉用户", risk: "官方", official: "官方", region: "中国", language: "中文", guide: "按主板或显卡型号查找驱动；刷 BIOS 前确认版本和硬件修订号。", confirmBeforeOpen: true, featured: false },
+      { name: "微星驱动下载", category: "驱动工具", description: "MSI 微星官方驱动和支持入口。", icon: "微", logo: favicon("msi.cn"), url: "https://cn.msi.com/support/download", tags: ["中文", "微星", "驱动"], audience: "DIY / 微星用户", risk: "官方", official: "官方", region: "中国", language: "中文", guide: "搜索设备型号下载驱动；主板用户注意芯片组、网卡和声卡驱动。", confirmBeforeOpen: true, featured: false },
+      { name: "JetBrains Toolbox", category: "开发软件", description: "JetBrains 官方 IDE 管理工具，可安装 IDEA、PyCharm 等。", icon: "JB", logo: favicon("jetbrains.com"), url: "https://www.jetbrains.com/toolbox-app/", tags: ["IDE", "JetBrains", "开发"], audience: "开发者", risk: "官方", official: "官方", region: "全球", language: "中文友好", guide: "适合统一安装和更新 JetBrains IDE；学生可了解教育授权。", confirmBeforeOpen: true, featured: false },
+      { name: "DBeaver", category: "开发软件", description: "开源数据库管理工具，支持 MySQL、PostgreSQL 等。", icon: "DB", logo: favicon("dbeaver.io"), url: "https://dbeaver.io/download/", tags: ["数据库", "开源", "开发"], audience: "开发者 / 数据用户", risk: "官方", official: "官方", region: "全球", language: "中文友好", guide: "适合连接多种数据库；保存连接密码前注意本机安全。", confirmBeforeOpen: true, featured: false },
+      { name: "PostgreSQL", category: "开发软件", description: "PostgreSQL 官方数据库下载入口。", icon: "PG", logo: favicon("postgresql.org"), url: "https://www.postgresql.org/download/", tags: ["数据库", "PostgreSQL", "官方"], audience: "开发者", risk: "官方", official: "官方", region: "全球", language: "英文", guide: "选择对应系统安装包；学习阶段可配合 pgAdmin 或 Docker 使用。", confirmBeforeOpen: true, featured: false },
+      { name: "纵横中文网", category: "免费小说", description: "中文网文平台，含免费、限免和付费作品。", icon: "纵", logo: favicon("zongheng.com"), url: "https://www.zongheng.com/", tags: ["中文", "小说", "网文"], audience: "网文读者", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "按分类或榜单找书；免费内容和付费章节请看页面标识。", confirmBeforeOpen: true, featured: false },
+      { name: "晋江文学城", category: "免费小说", description: "中文原创文学平台，覆盖言情、纯爱、同人等题材。", icon: "晋", logo: favicon("jjwxc.net"), url: "https://www.jjwxc.net/", tags: ["中文", "小说", "原创"], audience: "网文读者", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "搜索作品名或作者；阅读前看清免费章节和付费章节。", confirmBeforeOpen: true, featured: false },
+      { name: "豆瓣阅读", category: "免费小说", description: "中文原创阅读平台，含电子书和原创作品。", icon: "豆", logo: favicon("read.douban.com"), url: "https://read.douban.com/", tags: ["中文", "阅读", "电子书"], audience: "阅读者", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "适合找原创和出版电子书；免费试读后再决定是否购买。", confirmBeforeOpen: true, featured: false },
+      { name: "VNDB", category: "Galgame / 视觉小说", description: "视觉小说数据库，可查作品、角色、标签和语言版本。", icon: "VN", logo: favicon("vndb.org"), url: "https://vndb.org/", tags: ["视觉小说", "资料", "数据库"], audience: "视觉小说玩家", risk: "资料站，不提供下载", official: "第三方社区", region: "全球", language: "英文", guide: "适合查作品资料、补丁和语言信息；它是资料库，不是下载站。", confirmBeforeOpen: true, featured: false },
+      { name: "itch.io Visual Novel", category: "Galgame / 视觉小说", description: "独立视觉小说作品集合，可筛选免费和浏览器可玩作品。", icon: "游", logo: favicon("itch.io"), url: "https://itch.io/games/tag-visual-novel", tags: ["独立游戏", "视觉小说", "免费筛选"], audience: "玩家 / 创作者", risk: "第三方平台，内容质量不一", official: "官方平台", region: "全球", language: "英文", guide: "可筛选 free、browser playable；下载前查看作者说明和评论。", confirmBeforeOpen: true, featured: false },
+      { name: "Pixiv", category: "图片素材", description: "插画交流社区，适合找画师和二次元灵感。", icon: "Px", logo: favicon("pixiv.net"), url: "https://www.pixiv.net/", tags: ["插画", "二次元", "社区"], audience: "画师 / ACG 用户", risk: "社区内容，版权需授权", official: "官方平台", region: "全球", language: "中文友好", guide: "适合找灵感和画师；图片版权归作者，使用前需获得授权。", confirmBeforeOpen: true, featured: false },
+      { name: "站酷", category: "图片素材", description: "中文设计师社区，包含作品展示、素材和灵感。", icon: "站", logo: favicon("zcool.com.cn"), url: "https://www.zcool.com.cn/", tags: ["中文", "设计", "灵感"], audience: "设计师 / 创作者", risk: "作品版权需授权", official: "官方平台", region: "中国", language: "中文", guide: "适合看设计案例和找灵感；商用作品前必须联系作者授权。", confirmBeforeOpen: true, featured: false },
+      { name: "觅元素", category: "图片素材", description: "中文免抠元素和设计素材平台。", icon: "觅", logo: favicon("51yuansu.com"), url: "https://www.51yuansu.com/", tags: ["中文", "免抠", "素材"], audience: "设计 / 运营", risk: "免费与付费混合，许可需核对", official: "官方平台", region: "中国", language: "中文", guide: "适合找 PNG 元素；下载前确认免费、会员和商用许可。", confirmBeforeOpen: true, featured: false },
+      { name: "第一PPT", category: "PPT 模板", description: "中文 PPT 模板和课件素材资源站。", icon: "一", logo: favicon("1ppt.com"), url: "https://www.1ppt.com/", tags: ["中文", "PPT", "模板"], audience: "学生 / 教师 / 职场", risk: "第三方站点，注意广告", official: "第三方", region: "中国", language: "中文", guide: "按分类找模板或课件；下载时注意识别真实下载按钮。", confirmBeforeOpen: true, featured: false },
+      { name: "PPT超级市场", category: "PPT 模板", description: "中文 PPT 模板和图表素材平台。", icon: "超", logo: favicon("pptsupermarket.com"), url: "https://www.pptsupermarket.com/", tags: ["中文", "PPT", "图表"], audience: "职场 / 学生", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "适合找 PPT 模板和图表；下载前确认免费和授权范围。", confirmBeforeOpen: true, featured: false },
+      { name: "SlidesCarnival", category: "PPT 模板", description: "免费演示模板，支持 Google Slides 和 PowerPoint。", icon: "SC", logo: favicon("slidescarnival.com"), url: "https://www.slidescarnival.com/", tags: ["PPT", "模板", "免费"], audience: "学生 / 职场", risk: "免费许可需核对", official: "官方", region: "全球", language: "英文", guide: "适合找英文风格模板；使用前查看模板署名和许可要求。", confirmBeforeOpen: true, featured: false },
+      { name: "优酷动漫", category: "影视番剧", description: "优酷动漫频道，提供正版动画和少儿内容。", icon: "优", logo: favicon("youku.com"), url: "https://www.youku.com/channel/webcomic", tags: ["中文", "正版", "动漫"], audience: "动漫用户", risk: "官方平台，会员内容混合", official: "官方平台", region: "中国", language: "中文", guide: "进入后按频道和分类浏览；会员内容会有明显标识。", confirmBeforeOpen: true, featured: false },
+      { name: "芒果TV动漫", category: "影视番剧", description: "芒果 TV 动漫频道入口。", icon: "芒", logo: favicon("mgtv.com"), url: "https://www.mgtv.com/cartoon/", tags: ["中文", "正版", "动漫"], audience: "动漫用户", risk: "官方平台，会员内容混合", official: "官方平台", region: "中国", language: "中文", guide: "适合找正版动画和少儿内容；注意会员和广告标识。", confirmBeforeOpen: true, featured: false },
+      { name: "AcFun 动画区", category: "影视番剧", description: "AcFun 动画相关内容和用户投稿入口。", icon: "A", logo: favicon("acfun.cn"), url: "https://www.acfun.cn/v/list110/index.htm", tags: ["中文", "动画", "社区"], audience: "ACG 用户", risk: "平台内容混合", official: "官方平台", region: "中国", language: "中文", guide: "适合浏览动画和二次元投稿；授权情况以平台说明为准。", confirmBeforeOpen: true, featured: false },
+      { name: "动漫之家", category: "漫画轻小说", description: "中文动漫资讯和漫画相关社区入口。", icon: "动", logo: favicon("dmzj.com"), url: "https://www.dmzj.com/", tags: ["中文", "漫画", "资讯"], audience: "漫画 / 动漫用户", risk: "第三方平台，内容合规需自行判断", official: "第三方", region: "中国", language: "中文", guide: "适合查看动漫资讯和作品信息；具体内容来源和合规性请自行判断。", confirmBeforeOpen: true, featured: false },
+      { name: "咚漫漫画", category: "漫画轻小说", description: "Webtoon 中文平台，提供正版条漫阅读。", icon: "咚", logo: favicon("dongmanmanhua.cn"), url: "https://www.dongmanmanhua.cn/", tags: ["中文", "漫画", "条漫"], audience: "漫画读者", risk: "官方平台，免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "适合阅读正版条漫；关注免费章节和付费章节标识。", confirmBeforeOpen: true, featured: false },
+      { name: "文心一言", category: "AI 工具", description: "百度中文 AI 助手，支持问答、写作和创作。", icon: "文", logo: favicon("yiyan.baidu.com"), url: "https://yiyan.baidu.com/", tags: ["中文", "AI", "百度"], audience: "所有用户", risk: "官方服务", official: "官方", region: "中国", language: "中文", guide: "适合中文问答、写作和办公辅助；重要事实仍需核对。", confirmBeforeOpen: true, featured: false },
+      { name: "讯飞星火", category: "AI 工具", description: "科大讯飞中文 AI 助手，适合写作、学习和办公。", icon: "星", logo: favicon("xinghuo.xfyun.cn"), url: "https://xinghuo.xfyun.cn/", tags: ["中文", "AI", "讯飞"], audience: "学生 / 职场", risk: "官方服务", official: "官方", region: "中国", language: "中文", guide: "适合中文写作、学习和语音相关场景；敏感信息不要直接输入。", confirmBeforeOpen: true, featured: false },
+      { name: "秘塔 AI 搜索", category: "AI 工具", description: "中文 AI 搜索工具，适合带来源的资料检索。", icon: "秘", logo: favicon("metaso.cn"), url: "https://metaso.cn/", tags: ["中文", "AI搜索", "资料"], audience: "学生 / 职场", risk: "第三方服务", official: "官方", region: "中国", language: "中文", guide: "适合搜索资料和生成摘要；引用内容前请打开来源核对。", confirmBeforeOpen: true, featured: false },
+      { name: "哔哩哔哩课堂", category: "学习资料", description: "B 站知识和课程内容入口。", icon: "课", logo: favicon("bilibili.com"), url: "https://www.bilibili.com/cheese/", tags: ["中文", "课程", "学习"], audience: "学生 / 自学者", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "适合找中文视频课程；购买付费课前先看评价和试看内容。", confirmBeforeOpen: true, featured: false },
+      { name: "我要自学网", category: "学习资料", description: "中文软件、设计和办公技能学习平台。", icon: "学", logo: favicon("51zxw.net"), url: "https://www.51zxw.net/", tags: ["中文", "软件学习", "教程"], audience: "自学者 / 职场", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "适合学办公、设计和软件操作；课程权限以页面标识为准。", confirmBeforeOpen: true, featured: false },
+      { name: "菜鸟教程", category: "学习资料", description: "中文编程和 Web 技术入门教程站。", icon: "菜", logo: favicon("runoob.com"), url: "https://www.runoob.com/", tags: ["中文", "编程", "教程"], audience: "编程初学者", risk: "第三方教程，内容需结合官方文档", official: "第三方", region: "中国", language: "中文", guide: "适合快速入门和查语法；深入学习建议结合官方文档。", confirmBeforeOpen: true, featured: false },
+      { name: "石墨文档", category: "实用工具", description: "中文在线文档、表格和协作办公工具。", icon: "石", logo: favicon("shimo.im"), url: "https://shimo.im/", tags: ["中文", "文档", "协作"], audience: "办公 / 学习", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "适合协作文档和表格；分享链接前检查权限设置。", confirmBeforeOpen: true, featured: false },
+      { name: "语雀", category: "实用工具", description: "中文知识库和团队文档工具。", icon: "语", logo: favicon("yuque.com"), url: "https://www.yuque.com/", tags: ["中文", "知识库", "文档"], audience: "个人 / 团队", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "适合整理知识库和项目文档；公开文档前确认可见范围。", confirmBeforeOpen: true, featured: false },
+      { name: "幕布", category: "实用工具", description: "中文大纲笔记和思维整理工具。", icon: "幕", logo: favicon("mubu.com"), url: "https://mubu.com/", tags: ["中文", "笔记", "大纲"], audience: "学生 / 职场", risk: "免费与付费混合", official: "官方平台", region: "中国", language: "中文", guide: "适合写大纲和整理思路；导出和同步功能按套餐规则使用。", confirmBeforeOpen: true, featured: false },
+      { name: "Notion", category: "实用工具", description: "国际化笔记、知识库和项目管理工具。", icon: "N", logo: favicon("notion.so"), url: "https://www.notion.so/", tags: ["笔记", "知识库", "协作"], audience: "个人 / 团队", risk: "第三方云服务", official: "官方", region: "全球", language: "中文友好", guide: "适合知识库和项目管理；团队数据上云前先确认权限和隐私要求。", confirmBeforeOpen: true, featured: false },
+      { name: "GitHub", category: "开发软件", description: "代码托管和开源协作平台，适合管理项目和发布静态站。", icon: "GH", logo: favicon("github.com"), url: "https://github.com/", tags: ["GitHub", "代码托管", "开源"], audience: "开发者 / 维护者", risk: "官方平台", official: "官方", region: "全球", language: "中文友好", guide: "适合托管代码、管理版本和部署 Pages；公开仓库不要提交密钥。", confirmBeforeOpen: true, featured: false },
+      { name: "MDN Web Docs", category: "学习资料", description: "Web 前端权威文档，包含 HTML、CSS、JavaScript 参考。", icon: "MDN", logo: favicon("developer.mozilla.org"), url: "https://developer.mozilla.org/zh-CN/", tags: ["中文", "前端", "文档"], audience: "前端学习者 / 开发者", risk: "官方文档", official: "官方", region: "全球", language: "中文", guide: "适合查 HTML、CSS、JavaScript 用法；优先看中文页面，必要时对照英文原文。", confirmBeforeOpen: true, featured: false }
     ];
 
     const state = {
@@ -1122,7 +1154,6 @@
     const searchInput = document.querySelector("#searchInput");
     const clearSearch = document.querySelector("#clearSearch");
     const emptyState = document.querySelector("#emptyState");
-    const voiceToggle = document.querySelector("#voiceToggle");
     const assistantDialog = document.querySelector("#assistantDialog");
     const siteModal = document.querySelector("#siteModal");
     const modalIcon = document.querySelector("#modalIcon");
@@ -1132,24 +1163,10 @@
     const modalCancel = document.querySelector("#modalCancel");
     const modalOpen = document.querySelector("#modalOpen");
     let selectedSite = null;
-    let voiceEnabled = true;
     let assistantTimer = null;
 
     function normalize(text) {
       return String(text).trim().toLowerCase();
-    }
-
-    function speakLine(line) {
-      if (!voiceEnabled || !("speechSynthesis" in window)) {
-        return;
-      }
-
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(line);
-      utterance.lang = "zh-CN";
-      utterance.rate = 1.05;
-      utterance.pitch = 1.08;
-      window.speechSynthesis.speak(utterance);
     }
 
     function showAssistantLine(line) {
@@ -1157,7 +1174,6 @@
       assistantDialog.classList.add("show");
       clearTimeout(assistantTimer);
       assistantTimer = setTimeout(() => assistantDialog.classList.remove("show"), 4200);
-      speakLine(line);
     }
 
     function buildSafetyTags(site) {
@@ -1329,16 +1345,6 @@
       if (event.key === "Escape" && siteModal.classList.contains("show")) {
         closeSiteModal();
       }
-    });
-
-    voiceToggle.addEventListener("click", () => {
-      voiceEnabled = !voiceEnabled;
-      voiceToggle.textContent = voiceEnabled ? "语音开" : "语音关";
-      voiceToggle.setAttribute("aria-pressed", String(voiceEnabled));
-      if (!voiceEnabled && "speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-      }
-      showAssistantLine(voiceEnabled ? "语音已开启，我会用中文提示你。" : "语音已关闭，我只显示文字提示。");
     });
 
     totalCount.textContent = sites.length;
