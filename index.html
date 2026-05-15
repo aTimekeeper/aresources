@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="樱花资源站，一个二次元风格的免费资源站导航，收录论文文献、正版下载、免费小说、视觉小说、图片素材、PPT 模板、影视番剧、AI 和工具入口。" />
+  <title>樱花资源站 - 宅系免费导航</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #4d2438;
+      --soft-ink: #80506a;
+      --muted: #9d6d85;
+      --line: rgba(225, 95, 143, .22);
+      --petal: #ff7fac;
+      --petal-dark: #df3f80;
+      --rose: #b8326f;
+      --paper: rgba(255, 255, 255, .84);
+      --paper-strong: rgba(255, 255, 255, .94);
+      --cream: #fff8fb;
+      --sky: #e7f6ff;
+      --mint: #e9fff6;
+      --gold: #fff4d2;
+      --shadow: 0 18px 54px rgba(187, 67, 116, .14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.82), rgba(255,249,252,.68)),
+        url("assets/generated/sakura-ai-hero.png") center / cover fixed no-repeat,
+        linear-gradient(135deg, #fff9fc 0%, #ffe4ef 42%, #edf9ff 100%);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255, 255, 255, .88), transparent 0 17rem),
+        radial-gradient(circle at 86% 20%, rgba(231, 246, 255, .42), transparent 0 20rem),
+        radial-gradient(circle at 78% 88%, rgba(255, 244, 210, .42), transparent 0 18rem);
+    }
+
+    body::after {
+      opacity: .18;
+      background-image:
+        radial-gradient(circle, rgba(223, 63, 128, .48) 0 1.8px, transparent 2.4px),
+        radial-gradient(circle, rgba(90, 165, 216, .42) 0 1.4px, transparent 2px);
+      background-size: 96px 96px, 148px 148px;
+      background-position: 12px 20px, 48px 58px;
+      animation: patternDrift 30s linear infinite;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .site-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 22px 0 76px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 72px;
+      margin: 0 -2px;
+      padding: 12px 2px;
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1px solid rgba(223, 63, 128, .24);
+      border-radius: 50%;
+      color: white;
+      font-size: 20px;
+      font-weight: 900;
+      background: linear-gradient(145deg, #ff96bd, #df3f80);
+      box-shadow: 0 14px 28px rgba(223, 63, 128, .22);
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text strong,
+    .brand-text span {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-text strong {
+      color: var(--rose);
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .brand-text span {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(223, 63, 128, .14);
+      border-radius: 999px;
+      padding: 0 13px;
+      color: var(--soft-ink);
+      text-decoration: none;
+      background: rgba(255, 255, 255, .62);
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--petal-dark);
+      background: rgba(255, 255, 255, .94);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      min-height: 430px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr);
+      align-items: center;
+      gap: 38px;
+      padding: 48px 0 38px;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      max-width: 100%;
+      padding: 8px 13px;
+      border: 1px solid rgba(223, 63, 128, .18);
+      border-radius: 999px;
+      color: var(--rose);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 12px 28px rgba(223, 63, 128, .1);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      color: #c62f70;
+      font-size: clamp(44px, 7vw, 86px);
+      line-height: 1;
+      letter-spacing: 0;
+      text-shadow: 0 10px 32px rgba(223, 63, 128, .16);
+    }
+
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(94deg, #ef5c99 0%, #c52f70 42%, #57a8d8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .lead {
+      max-width: 640px;
+      margin: 0;
+      color: var(--soft-ink);
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.85;
+    }
+
+    .search-panel {
+      margin-top: 26px;
+      border: 1px solid rgba(223, 63, 128, .18);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(255, 255, 255, .72);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+
+    .search-input {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid rgba(223, 63, 128, .18);
+      border-radius: 8px;
+      padding: 0 16px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .92);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: rgba(223, 63, 128, .48);
+      box-shadow: 0 0 0 4px rgba(255, 127, 172, .14);
+    }
+
+    .clear-button {
+      min-width: 84px;
+      min-height: 52px;
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 900;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff8ab5, #d83b7d);
+      box-shadow: 0 14px 28px rgba(223, 63, 128, .18);
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 376px;
+      border: 1px solid rgba(223, 63, 128, .2);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,247,250,.76)),
+        url("assets/sakura-girl.png") center / cover no-repeat;
+      box-shadow: 0 26px 72px rgba(170, 64, 108, .18);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.2) 46%, rgba(255,255,255,.78) 100%);
+    }
+
+    .hero-card-content {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      display: grid;
+      gap: 10px;
+      border: 1px solid rgba(223, 63, 128, .18);
+      border-radius: 8px;
+      padding: 16px;
+      background: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card-content strong {
+      color: var(--rose);
+      font-size: 20px;
+    }
+
+    .hero-card-content span {
+      color: var(--soft-ink);
+      line-height: 1.65;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .stat {
+      min-height: 74px;
+      border: 1px solid rgba(223, 63, 128, .16);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(255, 255, 255, .74);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--rose);
+      font-size: 22px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 28px 0 14px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      color: var(--rose);
+      font-size: clamp(24px, 4vw, 36px);
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .result-count {
+      color: var(--soft-ink);
+      white-space: nowrap;
+      border: 1px solid rgba(223, 63, 128, .16);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 16px 0 22px;
+    }
+
+    .category-button {
+      min-height: 42px;
+      border: 1px solid rgba(223, 63, 128, .16);
+      border-radius: 999px;
+      padding: 0 14px;
+      color: var(--soft-ink);
+      cursor: pointer;
+      background: rgba(255, 255, 255, .7);
+      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+    }
+
+    .category-button:hover,
+    .category-button.active {
+      color: #fff;
+      border-color: transparent;
+      background: linear-gradient(135deg, #ff8ab5, #d83b7d);
+      transform: translateY(-1px);
+    }
+
+    .featured-grid,
+    .site-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .featured-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .site-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .site-card {
+      min-height: 184px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 12px;
+      border: 1px solid rgba(223, 63, 128, .16);
+      border-radius: 8px;
+      padding: 16px;
+      text-decoration: none;
+      background: var(--paper);
+      box-shadow: 0 14px 38px rgba(129, 61, 93, .1);
+      backdrop-filter: blur(16px);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .site-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(223, 63, 128, .34);
+      background: var(--paper-strong);
+      box-shadow: 0 22px 52px rgba(129, 61, 93, .16);
+    }
+
+    .featured-card {
+      min-height: 210px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,245,249,.8)),
+        linear-gradient(135deg, var(--sky), var(--gold));
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 900;
+      background: linear-gradient(145deg, #ec6da0, #5aa5d8);
+      box-shadow: 0 12px 24px rgba(90, 165, 216, .18);
+    }
+
+    .card-category {
+      max-width: 130px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      border: 1px solid rgba(223, 63, 128, .16);
+      border-radius: 999px;
+      padding: 5px 9px;
+      color: var(--muted);
+      font-size: 12px;
+      background: rgba(255,255,255,.72);
+    }
+
+    .site-card h3 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .site-card p {
+      margin: 0;
+      color: var(--soft-ink);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-height: 24px;
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 4px 8px;
+      color: #8a4969;
+      font-size: 12px;
+      background: rgba(255, 231, 240, .86);
+    }
+
+    .safety-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-height: 24px;
+    }
+
+    .safety {
+      border-radius: 999px;
+      padding: 4px 8px;
+      color: #466777;
+      font-size: 12px;
+      background: rgba(231, 246, 255, .9);
+    }
+
+    .safety.risk {
+      color: #8a5d23;
+      background: rgba(255, 244, 210, .95);
+    }
+
+    .safety.third-party {
+      color: #80506a;
+      background: rgba(255, 235, 243, .94);
+    }
+
+    .empty-state {
+      display: none;
+      border: 1px dashed rgba(223, 63, 128, .34);
+      border-radius: 8px;
+      padding: 28px;
+      color: var(--soft-ink);
+      text-align: center;
+      background: rgba(255,255,255,.7);
+    }
+
+    .empty-state.show {
+      display: block;
+    }
+
+    .publish-note {
+      margin-top: 28px;
+      border: 1px solid rgba(90, 165, 216, .22);
+      border-radius: 8px;
+      padding: 18px;
+      color: #426070;
+      background: rgba(231, 246, 255, .76);
+      line-height: 1.7;
+    }
+
+    .publish-note a {
+      color: #2d6f98;
+      font-weight: 800;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(45, 111, 152, .3);
+    }
+
+    .publish-note a:hover {
+      border-bottom-color: currentColor;
+    }
+
+    body.live2d-ready .mascot {
+      display: none;
+    }
+
+    body.live2d-ready #live2dcanvas,
+    body.live2d-ready canvas[id*="live2d"] {
+      filter: drop-shadow(0 18px 28px rgba(129, 61, 93, .18));
+    }
+
+    .mascot {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 20;
+      width: 138px;
+      user-select: none;
+    }
+
+    .mascot-bubble {
+      position: absolute;
+      left: 84px;
+      bottom: 118px;
+      width: 188px;
+      border: 1px solid rgba(223, 63, 128, .2);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--soft-ink);
+      font-size: 13px;
+      line-height: 1.5;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 14px 30px rgba(129, 61, 93, .14);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .2s ease, transform .2s ease;
+      pointer-events: none;
+    }
+
+    .mascot-bubble.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mascot-body {
+      position: relative;
+      width: 138px;
+      height: 168px;
+      border: 1px solid rgba(223, 63, 128, .18);
+      border-radius: 46% 46% 38% 38%;
+      overflow: hidden;
+      cursor: pointer;
+      background:
+        radial-gradient(circle at 53% 30%, rgba(255,255,255,.88), transparent 0 42px),
+        url("assets/sakura-girl.png") 63% 34% / 350px auto no-repeat,
+        linear-gradient(180deg, #fff, #ffeaf2);
+      box-shadow: 0 16px 42px rgba(129, 61, 93, .18);
+      animation: mascotFloat 4s ease-in-out infinite;
+    }
+
+    .mascot-body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0 72%, rgba(255,255,255,.78) 100%);
+      pointer-events: none;
+    }
+
+    .mascot-eye {
+      position: absolute;
+      top: 62px;
+      width: 15px;
+      height: 19px;
+      border-radius: 50%;
+      background: #5d2440;
+      box-shadow: inset 0 0 0 4px #7f395c, 0 0 0 2px rgba(255,255,255,.72);
+      transform: translate(var(--eye-x, 0px), var(--eye-y, 0px));
+      transition: transform .08s linear;
+      z-index: 2;
+    }
+
+    .mascot-eye::after {
+      content: "";
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .mascot-eye.left {
+      left: 47px;
+    }
+
+    .mascot-eye.right {
+      left: 72px;
+    }
+
+    .mascot-shadow {
+      width: 92px;
+      height: 14px;
+      margin: 8px auto 0;
+      border-radius: 50%;
+      background: rgba(129, 61, 93, .14);
+      animation: shadowPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes patternDrift {
+      to { background-position: 108px 116px, 196px 210px; }
+    }
+
+    @keyframes mascotFloat {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-8px) rotate(1deg); }
+    }
+
+    @keyframes shadowPulse {
+      0%, 100% { transform: scaleX(.92); opacity: .12; }
+      50% { transform: scaleX(1.08); opacity: .2; }
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 320px;
+      }
+
+      .featured-grid,
+      .site-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .site-shell {
+        width: min(100% - 24px, 1180px);
+        padding-bottom: 118px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        position: relative;
+      }
+
+      .nav-links {
+        max-width: 190px;
+      }
+
+      .hero {
+        padding-top: 22px;
+      }
+
+      .search-row,
+      .stats,
+      .featured-grid,
+      .site-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .result-count {
+        white-space: normal;
+      }
+
+      .mascot {
+        left: 10px;
+        bottom: 10px;
+        width: 96px;
+      }
+
+      .mascot-body {
+        width: 96px;
+        height: 116px;
+        background-size: 260px auto;
+        background-position: 63% 35%;
+      }
+
+      .mascot-eye {
+        top: 43px;
+        width: 11px;
+        height: 14px;
+      }
+
+      .mascot-eye.left {
+        left: 33px;
+      }
+
+      .mascot-eye.right {
+        left: 50px;
+      }
+
+      .mascot-bubble {
+        left: 62px;
+        bottom: 92px;
+        width: min(188px, calc(100vw - 86px));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar" aria-label="站点导航">
+      <a class="brand" href="#top" aria-label="樱花资源站首页">
+        <span class="brand-mark">樱</span>
+        <span class="brand-text">
+          <strong>樱花资源站</strong>
+          <span>宅系免费导航</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="页面导航">
+        <a href="#featured">推荐</a>
+        <a href="#library">资源库</a>
+        <a href="#publish">公开访问</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow">Anime Resource Portal / 公开静态导航站</div>
+          <h1 id="hero-title"><span class="gradient-text">樱花</span><br>资源站</h1>
+          <p class="lead">
+            一个面向宅系用户的免费网站中转站，集中整理论文文献、正版下载、免费小说、视觉小说、图片素材、PPT 模板、影视番剧、AI、学习资料和实用工具。页面是纯静态网站，部署后所有人都能通过公开网址访问。
+          </p>
+
+          <div class="search-panel" role="search">
+            <div class="search-row">
+              <input id="searchInput" class="search-input" type="search" placeholder="搜索站点、分类或标签，例如：番剧、漫画、AI、学习" autocomplete="off" />
+              <button id="clearSearch" class="clear-button" type="button">清空</button>
+            </div>
+            <div class="stats" aria-label="站点统计">
+              <div class="stat">
+                <strong id="totalCount">0</strong>
+                <span>已收录站点</span>
+              </div>
+              <div class="stat">
+                <strong id="categoryCount">0</strong>
+                <span>宅系分类</span>
+              </div>
+              <div class="stat">
+                <strong>公开</strong>
+                <span>适合静态托管</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="樱花资源站说明">
+          <div class="hero-card-content">
+            <strong>轻量、好改、可公开访问</strong>
+            <span>站点数据维护在页面 JS 数组里。之后新增链接，只需要复制一条数据、修改名称和网址，再重新部署即可。</span>
+          </div>
+        </aside>
+      </section>
+
+      <section id="featured" aria-labelledby="featured-title">
+        <div class="section-head">
+          <div>
+            <h2 id="featured-title">今日推荐</h2>
+            <p>优先展示公开、稳定、适合长期访问的免费入口。</p>
+          </div>
+        </div>
+        <div id="featuredGrid" class="featured-grid"></div>
+      </section>
+
+      <section id="library" aria-labelledby="library-title">
+        <div class="section-head">
+          <div>
+            <h2 id="library-title">资源库</h2>
+            <p>按分类筛选，也可以直接搜索关键词。</p>
+          </div>
+          <div id="resultCount" class="result-count">正在加载</div>
+        </div>
+
+        <div id="categoryList" class="categories" aria-label="资源分类"></div>
+        <div id="siteGrid" class="site-grid"></div>
+        <div id="emptyState" class="empty-state">没有找到匹配的站点。换个关键词试试，或者在 JS 数据里加入新的资源。</div>
+      </section>
+
+      <section id="publish" class="publish-note" aria-label="公开访问说明">
+        <strong>公开访问方案：</strong>
+        当前页面不依赖服务器和数据库，可以直接部署到 GitHub Pages、Netlify 或 Vercel。部署后，其他用户通过你的公开网址访问，只能浏览、搜索、筛选和点击链接，不能修改内容。
+        Live2D 桌宠使用 CDN 加载 <a href="https://www.npmjs.com/package/live2d-widget" target="_blank" rel="noopener noreferrer">live2d-widget</a>
+        与 <a href="https://www.jsdelivr.com/package/npm/live2d-widget-model-shizuku" target="_blank" rel="noopener noreferrer">Shizuku 模型包</a>，相关依赖采用其发布页标注的 GPL-2.0 许可。
+      </section>
+    </main>
+  </div>
+
+  <aside class="mascot" aria-label="樱花桌宠">
+    <div id="mascotBubble" class="mascot-bubble">欢迎来到樱花资源站。</div>
+    <button id="mascotBody" class="mascot-body" type="button" aria-label="点击桌宠">
+      <span class="mascot-eye left"></span>
+      <span class="mascot-eye right"></span>
+    </button>
+    <div class="mascot-shadow"></div>
+  </aside>
+
+  <script>
+    const categories = [
+      "全部",
+      "论文搜索",
+      "文献资料",
+      "正版下载",
+      "免费小说",
+      "Galgame / 视觉小说",
+      "图片素材",
+      "PPT 模板",
+      "影视番剧",
+      "漫画轻小说",
+      "AI 工具",
+      "学习资料",
+      "实用工具"
+    ];
+
+    const sites = [
+      { name: "arXiv", category: "论文搜索", description: "开放获取预印本论文，覆盖计算机、数学、物理、统计等方向。", icon: "论", url: "https://arxiv.org/", tags: ["预印本", "科研", "开放访问"], audience: "学生 / 研究者", risk: "开放访问", official: "官方", region: "全球", featured: true },
+      { name: "Google Scholar", category: "论文搜索", description: "学术搜索入口，适合检索论文题名、作者、引用和相关版本。", icon: "搜", url: "https://scholar.google.com/", tags: ["论文搜索", "引用", "学术"], audience: "学生 / 研究者", risk: "索引服务", official: "官方", region: "全球", featured: true },
+      { name: "Semantic Scholar", category: "论文搜索", description: "AI 辅助学术搜索，可查看摘要、引用网络和开放 PDF 入口。", icon: "SS", url: "https://www.semanticscholar.org/", tags: ["AI", "论文搜索", "开放 PDF"], audience: "研究者", risk: "索引服务", official: "官方", region: "全球", featured: false },
+      { name: "CORE", category: "论文搜索", description: "聚合全球开放获取论文和机构仓储内容。", icon: "核", url: "https://core.ac.uk/", tags: ["开放获取", "论文", "聚合"], audience: "学生 / 研究者", risk: "开放访问", official: "官方", region: "全球", featured: false },
+      { name: "OpenAlex", category: "论文搜索", description: "开放学术图谱，适合查作品、作者、机构、概念和引用关系。", icon: "OA", url: "https://openalex.org/", tags: ["开放数据", "学术图谱", "引用"], audience: "研究者 / 开发者", risk: "开放访问", official: "官方", region: "全球", featured: false },
+      { name: "PubMed Central", category: "文献资料", description: "生命科学和医学方向的开放全文文献库。", icon: "医", url: "https://pmc.ncbi.nlm.nih.gov/", tags: ["医学", "全文", "开放访问"], audience: "医学 / 生物", risk: "开放访问", official: "官方", region: "全球", featured: true },
+      { name: "DOAJ", category: "文献资料", description: "开放获取期刊目录，可检索正规开放期刊和文章。", icon: "刊", url: "https://doaj.org/", tags: ["期刊", "开放获取", "目录"], audience: "研究者", risk: "开放访问", official: "官方", region: "全球", featured: false },
+      { name: "BASE", category: "文献资料", description: "德国比勒费尔德大学维护的学术搜索引擎，偏开放仓储资料。", icon: "库", url: "https://www.base-search.net/", tags: ["学术搜索", "开放仓储", "文献"], audience: "学生 / 研究者", risk: "索引服务", official: "官方", region: "全球", featured: false },
+      { name: "Internet Archive", category: "文献资料", description: "公共数字馆藏，包含书籍、音频、影像和历史网页。", icon: "档", url: "https://archive.org/", tags: ["档案", "公共馆藏", "书籍"], audience: "泛用", risk: "第三方馆藏", official: "非营利机构", region: "全球", featured: true },
+      { name: "VLC", category: "正版下载", description: "官方开源播放器下载页，适合播放多格式视频和音频。", icon: "播", url: "https://www.videolan.org/vlc/", tags: ["播放器", "开源", "免费"], audience: "所有用户", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "7-Zip", category: "正版下载", description: "官方压缩软件，轻量、免费、开源。", icon: "压", url: "https://www.7-zip.org/", tags: ["压缩", "开源", "Windows"], audience: "所有用户", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "OBS Studio", category: "正版下载", description: "官方录屏和直播推流工具，适合视频制作和直播。", icon: "录", url: "https://obsproject.com/", tags: ["录屏", "直播", "开源"], audience: "创作者", risk: "官方", official: "官方", region: "全球", featured: true },
+      { name: "Blender", category: "正版下载", description: "官方 3D 创作软件，建模、动画、渲染一体化。", icon: "3D", url: "https://www.blender.org/download/", tags: ["3D", "开源", "创作"], audience: "设计 / 动画", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "Krita", category: "正版下载", description: "官方开源绘画软件，适合插画、漫画和概念设计。", icon: "绘", url: "https://krita.org/en/download/", tags: ["绘画", "开源", "插画"], audience: "画师", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "GIMP", category: "正版下载", description: "官方免费图像编辑软件，可处理图片修饰和基础设计。", icon: "修", url: "https://www.gimp.org/downloads/", tags: ["修图", "开源", "设计"], audience: "设计 / 普通用户", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "LibreOffice", category: "正版下载", description: "官方开源办公套件，支持文档、表格、演示等常用格式。", icon: "办", url: "https://www.libreoffice.org/download/download-libreoffice/", tags: ["办公", "开源", "文档"], audience: "所有用户", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "Visual Studio Code", category: "正版下载", description: "微软官方代码编辑器下载页。", icon: "码", url: "https://code.visualstudio.com/Download", tags: ["编程", "编辑器", "官方"], audience: "开发者", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "Firefox", category: "正版下载", description: "Mozilla 官方浏览器下载页，注重隐私和开放网络。", icon: "狐", url: "https://www.mozilla.org/firefox/new/", tags: ["浏览器", "官方", "隐私"], audience: "所有用户", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "Project Gutenberg", category: "免费小说", description: "公共版权电子书库，适合经典文学和英文阅读。", icon: "书", url: "https://www.gutenberg.org/", tags: ["电子书", "公共版权", "英文"], audience: "阅读者", risk: "公共版权", official: "非营利项目", region: "全球", featured: true },
+      { name: "Standard Ebooks", category: "免费小说", description: "精排公共版权电子书，排版和封面质量更统一。", icon: "读", url: "https://standardebooks.org/", tags: ["电子书", "公共版权", "精排"], audience: "阅读者", risk: "公共版权", official: "非营利项目", region: "全球", featured: false },
+      { name: "Wikisource", category: "免费小说", description: "维基文库，收录公共版权文本和开放许可文献。", icon: "维", url: "https://wikisource.org/", tags: ["公共版权", "文库", "多语言"], audience: "阅读者 / 学习者", risk: "开放访问", official: "维基项目", region: "全球", featured: false },
+      { name: "Open Library", category: "免费小说", description: "互联网档案馆的开放图书目录，可查找借阅和公开版本。", icon: "馆", url: "https://openlibrary.org/", tags: ["图书", "目录", "借阅"], audience: "阅读者", risk: "第三方馆藏", official: "非营利项目", region: "全球", featured: false },
+      { name: "青空文库", category: "免费小说", description: "日本公共版权文学作品，适合日语阅读和经典作品检索。", icon: "青", url: "https://www.aozora.gr.jp/", tags: ["日语", "文学", "公共版权"], audience: "日语学习者", risk: "公共版权", official: "公益项目", region: "日本", featured: false },
+      { name: "Steam 视觉小说", category: "Galgame / 视觉小说", description: "Steam 官方视觉小说标签页，可筛选免费、试玩和正版作品。", icon: "VN", url: "https://store.steampowered.com/tags/en/Visual%20Novel/", tags: ["正版", "视觉小说", "试玩"], audience: "全年龄 / 成人需筛选", risk: "可能含成人内容", official: "官方平台", region: "全球", featured: true },
+      { name: "itch.io Visual Novel", category: "Galgame / 视觉小说", description: "独立视觉小说作品集合，可筛选免费和浏览器可玩作品。", icon: "游", url: "https://itch.io/games/tag-visual-novel", tags: ["独立游戏", "视觉小说", "免费筛选"], audience: "玩家 / 创作者", risk: "第三方平台", official: "官方平台", region: "全球", featured: false },
+      { name: "MangaGamer", category: "Galgame / 视觉小说", description: "视觉小说正版商店，部分作品含成人内容，请按年龄和地区自行判断。", icon: "MG", url: "https://www.mangagamer.com/", tags: ["正版", "商店", "视觉小说"], audience: "成年用户", risk: "可能含成人内容", official: "官方商店", region: "全球", featured: false },
+      { name: "JAST USA", category: "Galgame / 视觉小说", description: "视觉小说正版商店，包含全年龄和成人向作品。", icon: "JA", url: "https://jastusa.com/", tags: ["正版", "商店", "视觉小说"], audience: "成年用户", risk: "可能含成人内容", official: "官方商店", region: "全球", featured: false },
+      { name: "DLsite", category: "Galgame / 视觉小说", description: "日本数字内容商店，含同人游戏、音声和视觉小说，请注意年龄分级。", icon: "DL", url: "https://www.dlsite.com/", tags: ["正版", "同人", "日区"], audience: "成年用户 / 日语用户", risk: "可能含成人内容", official: "官方商店", region: "日本", featured: false },
+      { name: "Galgame 自定义站点占位", category: "Galgame / 视觉小说", description: "复制这条数据并替换 URL，可加入站长自填站点；建议保留第三方和需自行判断标签。", icon: "新", url: "#", tags: ["站长自填", "待补充", "自定义"], audience: "站长维护", risk: "需自行判断", official: "第三方", region: "自定义", featured: false },
+      { name: "Unsplash", category: "图片素材", description: "高质量摄影图片素材，适合作为网页配图和灵感库。", icon: "照", url: "https://unsplash.com/", tags: ["摄影", "图片", "素材"], audience: "创作者", risk: "免费许可需核对", official: "官方", region: "全球", featured: false },
+      { name: "Pexels", category: "图片素材", description: "免费图片和视频素材平台，适合找封面、背景和短视频素材。", icon: "Px", url: "https://www.pexels.com/", tags: ["图片", "视频", "素材"], audience: "创作者", risk: "免费许可需核对", official: "官方", region: "全球", featured: false },
+      { name: "Pixabay", category: "图片素材", description: "免费图片、插画、视频和音乐素材搜索。", icon: "图", url: "https://pixabay.com/", tags: ["图片", "插画", "免费"], audience: "创作者", risk: "免费许可需核对", official: "官方", region: "全球", featured: false },
+      { name: "Wikimedia Commons", category: "图片素材", description: "维基共享资源，包含大量开放许可和公共领域媒体文件。", icon: "WC", url: "https://commons.wikimedia.org/", tags: ["开放许可", "公共领域", "图片"], audience: "学习 / 创作", risk: "需核对许可", official: "维基项目", region: "全球", featured: false },
+      { name: "Openverse", category: "图片素材", description: "开放许可素材搜索，可检索图片和音频。", icon: "OV", url: "https://openverse.org/", tags: ["开放许可", "搜索", "素材"], audience: "创作者", risk: "需核对许可", official: "官方", region: "全球", featured: false },
+      { name: "Canva Templates", category: "PPT 模板", description: "Canva 模板库，适合快速制作演示、海报和社媒图。", icon: "PPT", url: "https://www.canva.com/templates/presentations/", tags: ["模板", "演示", "设计"], audience: "学生 / 职场", risk: "免费与付费混合", official: "官方", region: "全球", featured: true },
+      { name: "Slidesgo", category: "PPT 模板", description: "演示模板网站，含免费模板和不同主题风格。", icon: "SG", url: "https://slidesgo.com/", tags: ["PPT", "模板", "免费"], audience: "学生 / 职场", risk: "免费与付费混合", official: "官方", region: "全球", featured: false },
+      { name: "SlidesCarnival", category: "PPT 模板", description: "免费演示模板，支持 Google Slides 和 PowerPoint。", icon: "SC", url: "https://www.slidescarnival.com/", tags: ["PPT", "模板", "免费"], audience: "学生 / 职场", risk: "免费许可需核对", official: "官方", region: "全球", featured: false },
+      { name: "Microsoft Create", category: "PPT 模板", description: "微软官方模板库，包含演示、简历、海报和办公模板。", icon: "微", url: "https://create.microsoft.com/templates/presentations", tags: ["微软", "PPT", "模板"], audience: "办公用户", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "OfficePlus", category: "PPT 模板", description: "微软 Office 官方模板站，提供 PPT、Word、Excel 模板。", icon: "OP", url: "https://www.officeplus.cn/", tags: ["Office", "模板", "中文"], audience: "中文办公用户", risk: "官方", official: "官方", region: "中国", featured: false },
+      { name: "哔哩哔哩番剧", category: "影视番剧", description: "正版番剧、国创、纪录片和用户视频内容，适合作为番剧入口。", icon: "番", url: "https://www.bilibili.com/anime/", tags: ["正版", "番剧", "国创"], audience: "泛二次元用户", risk: "官方", official: "官方平台", region: "中国", featured: true },
+      { name: "YouTube 动画频道", category: "影视番剧", description: "大量官方频道、独立动画和公开免费视频内容。", icon: "影", url: "https://www.youtube.com/", tags: ["视频", "官方频道", "免费"], audience: "全球用户", risk: "官方 / 用户上传混合", official: "官方平台", region: "全球", featured: false },
+      { name: "Manga Plus", category: "漫画轻小说", description: "集英社官方漫画平台，提供部分漫画的官方免费阅读。", icon: "漫", url: "https://mangaplus.shueisha.co.jp/", tags: ["官方", "漫画", "免费章节"], audience: "漫画读者", risk: "官方", official: "官方平台", region: "全球", featured: true },
+      { name: "ChatGPT", category: "AI 工具", description: "AI 对话、写作、学习和创意辅助入口。", icon: "AI", url: "https://chatgpt.com/", tags: ["AI", "写作", "学习"], audience: "所有用户", risk: "官方", official: "官方", region: "全球", featured: true },
+      { name: "Hugging Face Spaces", category: "AI 工具", description: "体验开源 AI 应用、模型演示和创意工具。", icon: "模", url: "https://huggingface.co/spaces", tags: ["AI", "模型", "开源"], audience: "AI 用户 / 开发者", risk: "第三方应用混合", official: "官方平台", region: "全球", featured: false },
+      { name: "Khan Academy", category: "学习资料", description: "免费课程、数学、科学和计算机学习资源。", icon: "学", url: "https://www.khanacademy.org/", tags: ["课程", "学习", "免费"], audience: "学生", risk: "官方", official: "官方", region: "全球", featured: false },
+      { name: "Coursera 免费课程", category: "学习资料", description: "可旁听部分课程，适合系统学习和技能提升。", icon: "课", url: "https://www.coursera.org/courses?query=free", tags: ["课程", "技能", "旁听"], audience: "学习者", risk: "免费与付费混合", official: "官方", region: "全球", featured: false },
+      { name: "Photopea", category: "实用工具", description: "浏览器里的图片编辑工具，可处理 PSD、图片和简单设计。", icon: "修", url: "https://www.photopea.com/", tags: ["修图", "设计", "在线工具"], audience: "创作者", risk: "第三方工具", official: "官方", region: "全球", featured: true },
+      { name: "TinyPNG", category: "实用工具", description: "在线压缩 PNG、JPEG 和 WebP 图片，适合网站发布前优化。", icon: "压", url: "https://tinypng.com/", tags: ["压缩", "图片", "工具"], audience: "站长 / 设计", risk: "第三方工具", official: "官方", region: "全球", featured: false }
+    ];
+
+    const state = {
+      category: "全部",
+      keyword: ""
+    };
+
+    const categoryList = document.querySelector("#categoryList");
+    const featuredGrid = document.querySelector("#featuredGrid");
+    const siteGrid = document.querySelector("#siteGrid");
+    const resultCount = document.querySelector("#resultCount");
+    const totalCount = document.querySelector("#totalCount");
+    const categoryCount = document.querySelector("#categoryCount");
+    const searchInput = document.querySelector("#searchInput");
+    const clearSearch = document.querySelector("#clearSearch");
+    const emptyState = document.querySelector("#emptyState");
+
+    function normalize(text) {
+      return String(text).trim().toLowerCase();
+    }
+
+    function siteMatches(site) {
+      const matchesCategory = state.category === "全部" || site.category === state.category;
+      const haystack = normalize([
+        site.name,
+        site.category,
+        site.description,
+        site.tags.join(" "),
+        site.audience,
+        site.risk,
+        site.official,
+        site.region
+      ].join(" "));
+      const matchesKeyword = !state.keyword || haystack.includes(normalize(state.keyword));
+      return matchesCategory && matchesKeyword;
+    }
+
+    function createSiteCard(site, featured = false) {
+      const card = document.createElement("a");
+      card.className = featured ? "site-card featured-card" : "site-card";
+      card.href = site.url;
+
+      if (site.url === "#") {
+        card.addEventListener("click", (event) => event.preventDefault());
+        card.setAttribute("aria-disabled", "true");
+      } else {
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
+      }
+
+      const tags = site.tags.map((tag) => `<span class="tag">${tag}</span>`).join("");
+      const safetyItems = [site.official, site.risk, site.region, site.audience].filter(Boolean);
+      const safety = safetyItems.map((item) => {
+        const text = String(item);
+        const tone = text.includes("成人") || text.includes("判断") || text.includes("付费") ? " risk" : "";
+        const thirdParty = text.includes("第三方") ? " third-party" : "";
+        return `<span class="safety${tone}${thirdParty}">${text}</span>`;
+      }).join("");
+
+      card.innerHTML = `
+        <div class="card-top">
+          <span class="card-icon">${site.icon}</span>
+          <span class="card-category">${site.category}</span>
+        </div>
+        <div>
+          <h3>${site.name}</h3>
+          <p>${site.description}</p>
+        </div>
+        <div class="safety-tags">${safety}</div>
+        <div class="tags">${tags}</div>
+      `;
+
+      return card;
+    }
+
+    function renderCategories() {
+      categoryList.innerHTML = "";
+      categories.forEach((category) => {
+        const button = document.createElement("button");
+        button.className = "category-button";
+        button.type = "button";
+        button.textContent = category;
+        button.classList.toggle("active", category === state.category);
+        button.addEventListener("click", () => {
+          state.category = category;
+          render();
+        });
+        categoryList.appendChild(button);
+      });
+    }
+
+    function renderFeatured() {
+      featuredGrid.innerHTML = "";
+      sites.filter((site) => site.featured).slice(0, 6).forEach((site) => {
+        featuredGrid.appendChild(createSiteCard(site, true));
+      });
+    }
+
+    function renderSites() {
+      const filtered = sites.filter(siteMatches);
+      siteGrid.innerHTML = "";
+      filtered.forEach((site) => {
+        siteGrid.appendChild(createSiteCard(site));
+      });
+
+      resultCount.textContent = `当前显示 ${filtered.length} / ${sites.length} 个站点`;
+      emptyState.classList.toggle("show", filtered.length === 0);
+    }
+
+    function render() {
+      renderCategories();
+      renderSites();
+    }
+
+    searchInput.addEventListener("input", (event) => {
+      state.keyword = event.target.value;
+      renderSites();
+    });
+
+    clearSearch.addEventListener("click", () => {
+      state.keyword = "";
+      searchInput.value = "";
+      searchInput.focus();
+      renderSites();
+    });
+
+    totalCount.textContent = sites.length;
+    categoryCount.textContent = categories.length - 1;
+    renderFeatured();
+    render();
+
+    const mascot = document.querySelector("#mascotBody");
+    const mascotBubble = document.querySelector("#mascotBubble");
+    const mascotLines = [
+      "今天也要发现好用的网站。",
+      "搜索关键词会更快找到入口。",
+      "新增链接时，复制 JS 数组里的一条数据就好。",
+      "公开部署后，朋友也能直接访问这个导航站。"
+    ];
+    let bubbleTimer = null;
+
+    function showMascotLine(line) {
+      mascotBubble.textContent = line;
+      mascotBubble.classList.add("show");
+      clearTimeout(bubbleTimer);
+      bubbleTimer = setTimeout(() => mascotBubble.classList.remove("show"), 3600);
+    }
+
+    document.addEventListener("mousemove", (event) => {
+      const rect = mascot.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const dx = Math.max(-4, Math.min(4, (event.clientX - centerX) / 28));
+      const dy = Math.max(-3, Math.min(3, (event.clientY - centerY) / 32));
+      mascot.style.setProperty("--eye-x", `${dx}px`);
+      mascot.style.setProperty("--eye-y", `${dy}px`);
+    });
+
+    mascot.addEventListener("click", () => {
+      const line = mascotLines[Math.floor(Math.random() * mascotLines.length)];
+      showMascotLine(line);
+    });
+
+    setTimeout(() => showMascotLine("欢迎来到樱花资源站。"), 800);
+
+    const live2dConfig = {
+      script: "https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js",
+      model: "https://cdn.jsdelivr.net/npm/live2d-widget-model-shizuku/assets/shizuku.model.json"
+    };
+
+    function markLive2dReady() {
+      const hasCanvas = document.querySelector("#live2dcanvas, canvas[id*='live2d'], canvas");
+      if (hasCanvas) {
+        document.body.classList.add("live2d-ready");
+      }
+    }
+
+    function initLive2dMascot() {
+      if (!window.L2Dwidget) {
+        return;
+      }
+
+      window.L2Dwidget.init({
+        model: {
+          jsonPath: live2dConfig.model,
+          scale: 1
+        },
+        display: {
+          position: "left",
+          width: 150,
+          height: 300,
+          hOffset: 18,
+          vOffset: -18
+        },
+        mobile: {
+          show: true,
+          scale: 0.58
+        },
+        react: {
+          opacityDefault: 0.92,
+          opacityOnHover: 1
+        },
+        dialog: {
+          enable: true,
+          script: {
+            "tap body": "这里是樱花资源站，今天也要认真找资源。",
+            "tap face": "别戳脸啦，先搜一下关键词吧。"
+          }
+        }
+      });
+
+      setTimeout(markLive2dReady, 1600);
+      setTimeout(markLive2dReady, 3600);
+    }
+
+    function loadLive2dMascot() {
+      const script = document.createElement("script");
+      script.src = live2dConfig.script;
+      script.async = true;
+      script.onload = initLive2dMascot;
+      script.onerror = () => showMascotLine("Live2D 加载失败，已切换轻量桌宠。");
+      document.head.appendChild(script);
+      setTimeout(() => {
+        if (!document.body.classList.contains("live2d-ready")) {
+          showMascotLine("Live2D 还在加载，先用轻量桌宠陪你。");
+        }
+      }, 5200);
+    }
+
+    loadLive2dMascot();
+  </script>
+</body>
+</html>
